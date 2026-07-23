@@ -487,3 +487,69 @@ AI Agent 输出必须包含：
 保持架构清晰。
 
 让未来的 AI Agent 可以继续开发。
+
+# UI规范引用
+
+前端开发必须遵循以下 UI 规范：
+
+## 官网
+
+参考：
+
+docs/UI-UX设计规范.md
+
+技术模板：
+
+syntro-astro
+
+用途：
+
+- Landing Page
+- 产品介绍
+- Pricing
+- Blog
+
+
+## 用户端 SaaS
+
+参考：
+
+docs/UI-UX设计规范.md
+
+设计方向：
+
+- Enterprise SaaS
+- Data Dashboard
+- Linear 风格
+- OpenAI Dashboard 风格
+
+
+## 管理端
+
+参考：
+
+docs/UI-UX设计规范.md
+
+设计方向：
+
+- 企业后台
+- 数据管理
+- 高密度信息展示
+
+
+## UI开发规则
+
+开发任何页面前：
+
+必须先阅读：
+
+1. docs/UI-UX设计规范.md
+2. 当前页面需求文档
+3. 已有组件规范
+
+
+禁止：
+
+- 自定义新的设计风格
+- 引入其他 UI 体系
+- 随意修改颜色、字体、布局规范
