@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const articles = [
+  {
+    category: "行业洞察",
+    title: "2026 年 AI 品牌可见度趋势报告",
+    excerpt: "随着 AI 搜索引擎和对话式 AI 的普及,品牌在 AI 生态中的可见度正在成为衡量品牌影响力的核心指标。本文深入分析 2026 年的五大趋势,帮助品牌管理者把握 AI 时代的新机遇。",
+    date: "2026 年 6 月 15 日",
+    author: "李明远",
+  },
+  {
+    category: "最佳实践",
+    title: "如何优化品牌在 ChatGPT 中的推荐率",
+    excerpt: "ChatGPT 已成为用户获取信息的首选入口之一。本文分享经过验证的品牌优化策略,从内容创作到权威性建设,帮助你的品牌在 ChatGPT 中获得更高的推荐权重和正面提及。",
+    date: "2026 年 5 月 28 日",
+    author: "陈思远",
+  },
+  {
+    category: "产品更新",
+    title: "AI Growth Engine 新增 DeepSeek 模型支持",
+    excerpt: "我们很高兴地宣布 AI Growth Engine 现已全面支持 DeepSeek 模型检测。企业版用户还可以自定义接入更多垂直领域 AI 模型,满足不同行业的特定分析需求。",
+    date: "2026 年 5 月 10 日",
+    author: "王晓彤",
+  },
+  {
+    category: "行业洞察",
+    title: "AI 时代品牌管理的三大挑战与应对",
+    excerpt: "AI 正在从根本上改变品牌与消费者的互动方式。品牌管理者面临数据主权、算法公平性和内容策略三大核心挑战,本文提供系统性的应对框架和实操建议。",
+    date: "2026 年 4 月 22 日",
+    author: "张一鸣",
+  },
+  {
+    category: "最佳实践",
+    title: "品牌 AI 可见度提升实操指南",
+    excerpt: "从内容优化到技术 SEO,从品牌权威性建设到社交媒体策略,本文提供一套完整的品牌 AI 可见度提升实操方案,涵盖 10+ 可立即执行的具体优化动作。",
+    date: "2026 年 4 月 5 日",
+    author: "李明远",
+  },
+  {
+    category: "产品更新",
+    title: "全新竞品对比分析功能上线",
+    excerpt: "升级后的竞品对比功能支持多品牌同时对比,新增雷达图和差距分析,帮助品牌更直观地了解与竞争对手在各个维度的表现差异,定位优势领域和待改进方向。",
+    date: "2026 年 3 月 18 日",
+    author: "王晓彤",
+  },
+];
+
+const categories = ["全部", "行业洞察", "最佳实践", "产品更新"];
+
+function getCategoryColor(cat) {
+  if (cat === "行业洞察") return "bg-primary-50 text-primary-700";
+  if (cat === "最佳实践") return "bg-accent-50 text-accent-600";
+  if (cat === "产品更新") return "bg-primary-100 text-primary-600";
+  return "bg-primary-100 text-primary-600";
+}
+---
+
+<Layout title="资源 - AI Growth Engine">
+  <section class="bg-gradient-to-b from-primary-50 via-white to-white">
+    <div class="px-6 pt-28 pb-20 mx-auto max-w-7xl lg:px-12 text-center">
+      <div class="max-w-2xl mx-auto">
+        <p class="text-sm font-bold uppercase tracking-wider text-primary-700">资源</p>
+        <h1 class="mt-5 text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl">资源中心</h1>
+        <p class="mt-4 text-lg text-base-500">AI 品牌可见度洞察、行业趋势分析与最佳实践</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="px-6 pb-20 mx-auto max-w-7xl lg:px-12">
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-14">
+        {
+          categories.map((cat) => (
+            <button class={`text-sm font-medium px-4 py-2 rounded-lg transition ${cat === "全部" ? 'bg-primary-900 text-white' : 'bg-primary-100 text-primary-600 hover:bg-primary-200'}`}>
+              {cat}
+            </button>
+          ))
+        }
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {
+          articles.map(({ category, title, excerpt, date, author }) => (
+            <div class="rounded-xl bg-white ring-1 ring-primary-200 p-6 hover:shadow-md transition duration-300 flex flex-col">
+              <span class={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${getCategoryColor(category)} self-start`}>{category}</span>
+              <h3 class="mt-3 text-lg font-semibold text-primary-900 leading-snug">{title}</h3>
+              <p class="mt-2 text-sm text-base-500 leading-relaxed flex-1">{excerpt}</p>
+              <div class="mt-4 pt-4 border-t border-primary-100 flex items-center justify-between text-xs text-base-400">
+                <span>{date}</span>
+                <span>{author}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary-50">
+    <div class="px-6 py-20 mx-auto max-w-7xl lg:px-12 text-center">
+      <div class="max-w-xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">订阅我们的内容</h2>
+        <p class="mt-4 text-base text-base-500">获取最新的 AI 品牌可见度洞察和增长策略,每月发送到你的邮箱,助你持续掌握 AI 品牌管理前沿动态。</p>
+        <div class="flex flex-wrap items-center justify-center gap-3 mt-10 max-w-md mx-auto">
+          <input type="email" placeholder="输入你的邮箱地址" class="flex-1 min-w-0 h-11 px-4 py-2 text-sm bg-white rounded-xl ring-1 ring-primary-200 placeholder-base-400 focus:outline-none focus:ring-2 focus:ring-primary-600" />
+          <button class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold bg-primary-900 text-white hover:bg-primary-800 transition shadow-sm">订阅</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

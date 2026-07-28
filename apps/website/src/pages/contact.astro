@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { loadSiteConfig } from '../lib/site-config';
+
+const settings = await loadSiteConfig();
+---
+
+<Layout title={`${settings.site_name} - 联系我们`} description={settings.site_description}>
+  <section class="bg-gradient-to-b from-primary-50 via-white to-white">
+    <div class="px-6 pt-28 pb-20 mx-auto max-w-7xl lg:px-12">
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="text-sm font-bold uppercase tracking-wider text-primary-700">联系我们</p>
+        <h1 class="mt-5 text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl">联系我们</h1>
+        <p class="mt-4 text-lg text-base-500 max-w-xl mx-auto">对我们的产品有任何疑问或建议,欢迎随时与我们取得联系。我们会在 24 小时内回复你的每一条消息。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="px-6 pb-20 mx-auto max-w-7xl lg:px-12">
+      <div class="grid lg:grid-cols-3 gap-10 max-w-5xl mx-auto">
+        <div class="lg:col-span-2">
+          <div class="rounded-xl bg-white ring-1 ring-primary-200 p-8">
+            <h2 class="text-xl font-bold text-primary-900 mb-6">发送留言</h2>
+            <form id="contactForm" class="space-y-5">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="text-sm font-medium text-base-700">姓名 <span class="text-red-400">*</span></label>
+                  <input id="fieldName" type="text" required placeholder="请输入您的姓名" class="mt-1.5 block w-full h-10 px-4 py-2 text-sm bg-white rounded-lg ring-1 ring-primary-200 placeholder-base-400 focus:outline-none focus:ring-2 focus:ring-primary-600" />
+                </div>
+                <div>
+                  <label class="text-sm font-medium text-base-700">邮箱 <span class="text-red-400">*</span></label>
+                  <input id="fieldEmail" type="email" required placeholder="请输入您的邮箱地址" class="mt-1.5 block w-full h-10 px-4 py-2 text-sm bg-white rounded-lg ring-1 ring-primary-200 placeholder-base-400 focus:outline-none focus:ring-2 focus:ring-primary-600" />
+                </div>
+              </div>
+              <div>
+                <label class="text-sm font-medium text-base-700">主题</label>
+                <input id="fieldSubject" type="text" placeholder="请输入主题,如产品咨询、合作意向等" class="mt-1.5 block w-full h-10 px-4 py-2 text-sm bg-white rounded-lg ring-1 ring-primary-200 placeholder-base-400 focus:outline-none focus:ring-2 focus:ring-primary-600" />
+              </div>
+              <div>
+                <label class="text-sm font-medium text-base-700">留言 <span class="text-red-400">*</span></label>
+                <textarea id="fieldMessage" rows="4" required placeholder="请详细描述您的需求或问题,我们会尽快回复" class="mt-1.5 block w-full px-4 py-2 text-sm bg-white rounded-lg ring-1 ring-primary-200 placeholder-base-400 focus:outline-none focus:ring-2 focus:ring-primary-600 resize-y"></textarea>
+              </div>
+              <button id="submitBtn" type="submit" class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold bg-primary-900 text-white hover:bg-primary-800 transition shadow-sm">提交留言</button>
+              <p id="formStatus" class="text-sm hidden"></p>
+            </form>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div class="rounded-xl bg-white ring-1 ring-primary-200 p-6 hover:shadow-md transition duration-300">
+            <h3 class="text-base font-semibold text-primary-900 mb-4">联系方式</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="text-xs font-medium text-base-400 uppercase tracking-wider">邮箱</p>
+             <p class="text-sm text-base-700 mt-1" data-contact-email>{settings.contact_email}</p>
+              </div>
+              <div>
+                <p class="text-xs font-medium text-base-400 uppercase tracking-wider">电话</p>
+             <p class="text-sm text-base-700 mt-1" data-contact-phone>{settings.contact_phone}</p>
+              </div>
+              <div>
+                <p class="text-xs font-medium text-base-400 uppercase tracking-wider">地址</p>
+             <p class="text-sm text-base-700 mt-1" data-contact-address>{settings.contact_address}</p>
+              </div>
+              <div>
+                <p class="text-xs font-medium text-base-400 uppercase tracking-wider">工作时间</p>
+             <p class="text-sm text-base-700 mt-1" data-working-hours>{settings.working_hours}</p>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-xl bg-primary-50 ring-1 ring-primary-200 p-6">
+            <p class="text-sm font-semibold text-primary-700">产品咨询</p>
+            <p class="text-sm text-base-500 mt-2 leading-relaxed">想要了解 AI Growth Engine 如何帮助你的品牌提升 AI 可见度?立即免费开始使用,3 分钟完成注册即可体验完整功能。</p>
+            <a href="/app" class="inline-flex items-center text-sm font-semibold text-accent-600 hover:text-accent-700 transition mt-3">
+              免费开始使用
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = (document.getElementById('fieldName') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('fieldEmail') as HTMLInputElement).value.trim();
+    const subject = (document.getElementById('fieldSubject') as HTMLInputElement).value.trim();
+    const message = (document.getElementById('fieldMessage') as HTMLTextAreaElement).value.trim();
+    const btn = document.getElementById('submitBtn') as HTMLButtonElement;
+    const status = document.getElementById('formStatus') as HTMLParagraphElement;
+
+    if (!name || !email || !message) {
+      status.className = 'text-sm text-red-500 mt-3';
+      status.textContent = '请填写姓名、邮箱和留言内容';
+      status.classList.remove('hidden');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '提交中...';
+    status.className = 'text-sm text-gray-500 mt-3';
+    status.textContent = '正在提交...';
+    status.classList.remove('hidden');
+
+    try {
+      const res = await fetch('/api/v1/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        status.className = 'text-sm text-green-600 mt-3';
+        status.textContent = '留言发送成功！我们会在 24 小时内回复你。';
+        (document.getElementById('contactForm') as HTMLFormElement).reset();
+      } else {
+        status.className = 'text-sm text-red-500 mt-3';
+        status.textContent = data.message || '提交失败，请稍后重试';
+      }
+    } catch {
+      status.className = 'text-sm text-red-500 mt-3';
+      status.textContent = '网络错误，请稍后重试';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '提交留言';
+    }
+  });
+</script>

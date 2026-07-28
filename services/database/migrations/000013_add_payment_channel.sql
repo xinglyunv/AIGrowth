@@ -1,0 +1,1 @@
+ALTER TABLE payment_configs ADD COLUMN IF NOT EXISTS channel VARCHAR(32) NOT NULL DEFAULT 'alipay';

@@ -1,0 +1,24 @@
+{
+  "name": "ai-growth-engine",
+  "private": true,
+  "packageManager": "pnpm@9.1.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev:website": "pnpm --filter @aige/website dev",
+    "dev:dashboard": "pnpm --filter @aige/dashboard dev",
+    "dev:admin": "pnpm --filter @aige/admin dev",
+    "build:website": "pnpm --filter @aige/website build",
+    "build:dashboard": "pnpm --filter @aige/dashboard build",
+    "build:admin": "pnpm --filter @aige/admin build",
+    "lint": "pnpm -r lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.5.0"
+  }
+}

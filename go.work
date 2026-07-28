@@ -1,0 +1,27 @@
+go 1.25.6
+
+use (
+	./services/admin
+	./services/ai-engine
+	./services/aimodel
+	./services/api
+	./services/audit
+	./services/auth
+	./services/billing
+	./services/cdk
+	./services/competitor
+	./services/contact
+	./services/notification
+	./services/order
+	./services/payment
+	./services/plan
+	./services/project
+	./services/report
+	./services/requestlog
+	./services/scheduler
+	./services/setting
+	./services/space
+	./services/task
+	./services/user
+	./services/worker
+)

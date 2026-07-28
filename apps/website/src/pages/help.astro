@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const categories = [
+  { title: "快速上手", description: "了解如何快速注册并开始使用 AI Growth Engine 进行品牌可见度分析,5 分钟内完成首次检测,从零开始掌握平台核心功能。" },
+  { title: "账户管理", description: "管理你的账户设置、密码、团队权限和通知偏好,确保账户安全,提升团队协作效率,合理配置成员角色和访问权限。" },
+  { title: "品牌管理", description: "学习如何创建、编辑和管理品牌档案,优化品牌名称、官网和关键词信息以获得更准确的 AI 可见度分析结果。" },
+  { title: "检测任务", description: "了解如何创建和管理 AI 可见度检测任务,查看检测进度和状态,批量处理品牌分析请求,掌握任务调度技巧。" },
+  { title: "报告解读", description: "学习如何阅读和理解 AI 可见度分析报告,从数据中发现关键洞察和增长机会,掌握各图表指标的含义和应用场景。" },
+  { title: "计费与订阅", description: "了解定价方案、订阅管理、发票和账单相关信息,轻松管理付费计划,掌握升级、降级和取消订阅的操作流程。" },
+];
+
+const faqItems = [
+  { q: "如何开始使用 AI Growth Engine？", a: "注册免费账户后,在控制台创建品牌档案,提交品牌名称和关键词,系统会自动开始在多个 AI 模型中检索品牌信息。整个过程无需任何技术经验,三步即可完成,5 分钟内即可看到初步分析结果。" },
+  { q: "如何添加多个品牌进行监控？", a: "在品牌管理页面点击添加品牌,填写品牌名称、官网链接和相关关键词即可。免费版支持 1 个品牌,专业版支持 10 个品牌,企业版不限品牌数量。你可以为每个品牌单独设置分析参数。" },
+  { q: "品牌分析报告包含哪些内容？", a: "报告包括品牌在各 AI 模型中的提及率、推荐率、情感分析、关键词覆盖度、竞品对比数据,以及基于数据分析的增长优化建议。所有数据以可视化图表呈现,支持按时间维度筛选和对比。" },
+  { q: "如何升级或更改订阅方案？", a: "在控制台的计费管理页面可以随时升级或更改订阅方案。升级即时生效,差价按比例计算。降级将在当前计费周期结束后生效,降级后仍可使用原方案功能至周期结束。" },
+  { q: "数据安全如何保障？", a: "我们采用企业级数据加密标准,数据传输使用 TLS 加密,存储使用 AES-256 加密。品牌数据仅用于分析目的,不会与第三方共享。企业版支持私有化部署,数据完全由企业掌控。" },
+];
+---
+
+<Layout title="帮助中心 - AI Growth Engine">
+  <section class="bg-gradient-to-b from-primary-50 via-white to-white">
+    <div class="px-6 pt-28 pb-20 mx-auto max-w-7xl lg:px-12 text-center">
+      <div class="max-w-2xl mx-auto">
+        <p class="text-sm font-bold uppercase tracking-wider text-primary-700">帮助中心</p>
+        <h1 class="mt-5 text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl">帮助中心</h1>
+        <p class="mt-4 text-lg text-base-500">搜索常见问题,或浏览分类指南,快速找到你需要的答案</p>
+        <div class="max-w-lg mx-auto mt-10">
+          <div class="relative">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-base-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <input type="text" placeholder="搜索帮助文章..." class="block w-full h-12 pl-10 pr-4 py-2 text-sm bg-white rounded-xl ring-1 ring-primary-200 placeholder-base-400 focus:outline-none focus:ring-2 focus:ring-primary-600" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="px-6 pb-20 mx-auto max-w-7xl lg:px-12">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">浏览分类</h2>
+        <p class="mt-3 text-base text-base-500">按主题分类查找你需要的帮助内容</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {
+          categories.map(({ title, description }) => (
+            <div class="rounded-xl bg-white ring-1 ring-primary-200 p-6 hover:shadow-md transition duration-300 cursor-pointer">
+              <h3 class="text-lg font-semibold text-primary-900">{title}</h3>
+              <p class="mt-2 text-sm text-base-500 leading-relaxed">{description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary-50">
+    <div class="px-6 py-20 mx-auto max-w-7xl lg:px-12">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center mb-14">
+          <p class="text-sm font-bold uppercase tracking-wider text-primary-700">FAQ</p>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">常见问题</h2>
+          <p class="mt-3 text-base text-base-500">快速找到常见问题的答案</p>
+        </div>
+        <div x-data="{ activeAccordion: '', setActiveAccordion(id) { this.activeAccordion = (this.activeAccordion == id) ? '' : id } }" class="w-full mx-auto">
+          {
+            faqItems.map(({ q, a }) => (
+              <div x-data="{ id: $id('accordion') }" class="border-b border-primary-200 last:border-0">
+                <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full py-5 text-left">
+                  <span class="text-sm font-medium text-primary-900" :class="{ 'text-primary-700': activeAccordion==id }">{q}</span>
+                  <svg class="w-4 h-4 text-base-400 shrink-0 ml-4 transition duration-300" :class="{ 'rotate-45': activeAccordion==id }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
+                  </svg>
+                </button>
+                <div x-show="activeAccordion==id" x-collapse>
+                  <div class="pb-5 text-sm text-base-500 leading-relaxed">{a}</div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <div class="text-center mt-12">
+          <p class="text-sm text-base-500">没有找到答案?</p>
+          <a href="/contact" class="inline-flex items-center text-sm font-semibold text-accent-600 hover:text-accent-700 transition mt-2">
+            联系我们获取帮助
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

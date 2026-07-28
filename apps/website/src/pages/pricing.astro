@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { loadSiteConfig } from '../lib/site-config';
+
+const settings = await loadSiteConfig();
+
+const plans = [
+  {
+    name: "免费版",
+    desc: "适合个人或初创品牌初步了解",
+    price: "免费",
+    unit: "",
+    cta: "开始免费使用",
+    href: "/app",
+    accent: false,
+    features: [
+      { name: "1 个品牌监控", included: true },
+      { name: "单模型检测 (1 个 AI 模型)", included: true },
+      { name: "月更新报告", included: true },
+      { name: "基础品牌可见度评分", included: true },
+      { name: "邮件通知", included: true },
+      { name: "竞品对比分析", included: false },
+      { name: "增长策略建议", included: false },
+      { name: "API 访问", included: false },
+    ],
+  },
+  {
+    name: "专业版",
+    desc: "适合成长型企业深度分析",
+    price: "299",
+    unit: "元/月",
+    cta: "立即订阅",
+    href: "/app",
+    accent: true,
+    features: [
+      { name: "10 个品牌监控", included: true },
+      { name: "多模型全覆盖 (10+ AI 模型)", included: true },
+      { name: "周更新报告", included: true },
+      { name: "竞品对比分析", included: true },
+      { name: "增长策略建议", included: true },
+      { name: "可视化智能报告", included: true },
+      { name: "数据导出 (PDF / CSV)", included: true },
+      { name: "API 访问", included: false },
+    ],
+  },
+  {
+    name: "企业版",
+    desc: "适合大型品牌定制化需求",
+    price: "定制",
+    unit: "",
+    cta: "联系销售",
+    href: "/contact",
+    accent: false,
+    features: [
+      { name: "不限品牌数量", included: true },
+      { name: "全模型覆盖 + 自定义模型接入", included: true },
+      { name: "实时更新报告", included: true },
+      { name: "深度竞品分析", included: true },
+      { name: "专属客户成功经理", included: true },
+      { name: "定制化报告与分析维度", included: true },
+      { name: "全功能 API 访问", included: true },
+      { name: "私有化部署可选", included: true },
+    ],
+  },
+];
+
+const faqItems = [
+  { q: "免费版和专业版的主要区别是什么？", a: "免费版支持 1 个品牌的单模型检测,适合初步了解品牌在 AI 中的表现。专业版支持 10 个品牌、全模型覆盖（10+ AI 模型）、竞品对比分析和增长建议,并提供周更报告和数据导出功能。企业版提供不限品牌数量、自定义模型接入和私有化部署等高级功能。" },
+  { q: "是否支持按月或按年付费？", a: "专业版同时支持按月（299 元/月）和按年（239 元/月,享 8 折优惠）付费。按年订阅可节省 20% 费用。企业版根据具体需求定制计费方案,支持季度、年度等多种付费周期。" },
+  { q: "免费版有使用期限吗？", a: "免费版没有使用期限,可永久使用。如需体验完整功能,可在账户内随时升级,升级后立即享受对应方案的全部功能。升级差价按比例计算,无需重新注册账户。" },
+  { q: "付费方案是否支持退款？", a: "我们提供 7 天无理由退款保证。订阅专业版后 7 天内如果不满意,可随时取消订阅并获得全额退款。企业版根据合同条款执行,通常提供 30 天试用期。" },
+  { q: "企业版如何定制和报价？", a: "企业版支持定制 AI 模型接入、自定义分析维度、私有化部署以及 API 集成。通过联系我们提交需求,销售团队会在 1-2 个工作日内与你联系,深入了解业务场景后提供定制化方案和报价。" },
+];
+---
+
+<Layout title={`${settings.site_name} - 定价`} description={settings.site_description}>
+  <section class="bg-gradient-to-b from-primary-50 via-white to-white">
+    <div class="px-6 pt-28 pb-20 mx-auto max-w-7xl lg:px-12">
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="text-sm font-bold uppercase tracking-wider text-primary-700">定价</p>
+        <h1 class="mt-5 text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl">选择适合你的方案</h1>
+        <p class="mt-4 text-lg text-base-500">{settings.hero.subtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="px-6 pb-20 mx-auto max-w-7xl lg:px-12">
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
+        {
+          plans.map(({ name, desc, price, unit, cta, href, accent, features }) => (
+            <div class={`rounded-2xl p-8 flex flex-col ${accent ? 'bg-primary-50 ring-1 ring-primary-900 relative' : 'bg-white ring-1 ring-primary-200'}`}>
+              {accent && <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary-900 text-white text-xs font-semibold px-3 py-1 rounded-full">推荐</div>}
+              <h3 class="text-lg font-semibold text-primary-900">{name}</h3>
+              <p class="text-sm text-base-500 mt-1">{desc}</p>
+              <p class="mt-6"><span class="text-4xl font-bold text-primary-900">{price}</span>{unit ? <span class="text-sm text-base-500"> {unit}</span> : ''}</p>
+              <a href={href} class={`inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold w-full mt-6 transition ${accent ? 'bg-primary-900 text-white hover:bg-primary-800 shadow-sm' : 'ring-1 ring-primary-300 text-primary-700 bg-white hover:bg-primary-50'}`}>
+                {cta}
+              </a>
+              <ul class="mt-8 space-y-3 text-sm text-base-500 flex-1">
+                {
+                  features.map(({ name: fname, included }) => (
+                    <li class="flex items-center gap-3">
+                      {
+                        included
+                          ? <svg class="w-4 h-4 text-primary-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                          : <svg class="w-4 h-4 text-primary-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                      }
+                      <span class={included ? 'text-base-500' : 'text-primary-300'}>{fname}</span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <p class="text-center text-xs text-base-400 mt-8">专业版支持年付优惠,按年订阅享受 8 折优惠。企业版价格根据具体需求定制。</p>
+    </div>
+  </section>
+
+  <section class="bg-primary-50">
+    <div class="px-6 py-20 mx-auto max-w-7xl lg:px-12">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center">
+          <p class="text-sm font-bold uppercase tracking-wider text-primary-700">FAQ</p>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">定价常见问题</h2>
+          <p class="mt-4 text-base text-base-500">关于定价和订阅的常见疑问解答</p>
+        </div>
+        <div x-data="{ activeAccordion: '', setActiveAccordion(id) { this.activeAccordion = (this.activeAccordion == id) ? '' : id } }" class="w-full mx-auto mt-14">
+          {
+            faqItems.map(({ q, a }) => (
+              <div x-data="{ id: $id('accordion') }" class="border-b border-primary-200 last:border-0">
+                <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full py-5 text-left">
+                  <span class="text-sm font-medium text-primary-900" :class="{ 'text-primary-700': activeAccordion==id }">{q}</span>
+                  <svg class="w-4 h-4 text-base-400 shrink-0 ml-4 transition duration-300" :class="{ 'rotate-45': activeAccordion==id }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
+                  </svg>
+                </button>
+                <div x-show="activeAccordion==id" x-collapse>
+                  <div class="pb-5 text-sm text-base-500 leading-relaxed">{a}</div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="px-6 py-20 mx-auto max-w-7xl lg:px-12 text-center">
+      <div class="max-w-xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">还不确定选哪个方案</h2>
+        <p class="mt-4 text-base text-base-500">所有方案均支持免费试用,你可以随时升级或降级方案,灵活匹配业务需求。</p>
+        <div class="flex flex-wrap items-center justify-center gap-4 mt-10">
+          <a href={settings.hero.primary_href} class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold bg-accent-600 text-white hover:bg-accent-700 transition shadow-sm">{settings.hero.primary_label}</a>
+          <a href="/contact" class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold ring-1 ring-primary-300 text-primary-700 bg-white hover:bg-primary-50 transition">联系销售</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

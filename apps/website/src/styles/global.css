@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-black: #121212;
+  --color-primary: #0F172A;
+  --color-primary-50: #F8FAFC;
+  --color-primary-100: #F1F5F9;
+  --color-primary-200: #E2E8F0;
+  --color-primary-300: #CBD5E1;
+  --color-primary-400: #94A3B8;
+  --color-primary-500: #64748B;
+  --color-primary-600: #475569;
+  --color-primary-700: #334155;
+  --color-primary-800: #1E293B;
+  --color-primary-900: #0F172A;
+  --color-primary-950: #020617;
+  --color-accent-50: #F0F9FF;
+  --color-accent-100: #E0F2FE;
+  --color-accent-200: #BAE6FD;
+  --color-accent-300: #7DD3FC;
+  --color-accent-400: #38BDF8;
+  --color-accent-500: #0EA5E9;
+  --color-accent-600: #0284C7;
+  --color-accent-700: #0369A1;
+  --color-accent-800: #075985;
+  --color-accent-900: #0C4A6E;
+  --color-base-25: #FAFAFA;
+  --color-base-50: #F9FAFB;
+  --color-base-100: #F3F4F6;
+  --color-base-200: #E5E7EB;
+  --color-base-300: #D1D5DB;
+  --color-base-400: #9CA3AF;
+  --color-base-500: #6B7280;
+  --color-base-600: #4B5563;
+  --color-base-700: #374151;
+  --color-base-800: #1F2937;
+  --color-base-900: #111827;
+  --color-base-950: #030712;
+}
+:root { font-family: Inter, sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
+}
+button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+
+.theme-ember {
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #ffedd5;
+  --color-primary-200: #fed7aa;
+  --color-primary-300: #fdba74;
+  --color-primary-400: #fb923c;
+  --color-primary-500: #f97316;
+  --color-primary-600: #ea580c;
+  --color-primary-700: #c2410c;
+  --color-primary-800: #9a3412;
+  --color-primary-900: #7c2d12;
+  --color-primary-950: #431407;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+  --color-accent-800: #92400e;
+  --color-accent-900: #78350f;
+}
+
+body {
+  word-break: keep-all;
+}

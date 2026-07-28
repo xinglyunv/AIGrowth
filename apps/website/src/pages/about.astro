@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { loadSiteConfig } from '../lib/site-config';
+
+const settings = await loadSiteConfig();
+
+const team = [
+  { initial: "李", name: "李明远", role: "创始人 & CEO", bio: "前某头部 SaaS 公司产品副总裁,15 年企业服务经验,曾主导多款 SaaS 产品从 0 到 1 的完整构建和规模化增长。" },
+  { initial: "陈", name: "陈思远", role: "CTO", bio: "前 Google AI 工程师,专注 NLP 和大语言模型应用,拥有多项 AI 相关专利,在信息检索领域有深厚积累。" },
+  { initial: "王", name: "王晓彤", role: "产品负责人", bio: "10 年 B2B SaaS 产品经验,曾主导多款千万级营收产品的设计与迭代,擅长将技术能力转化为产品价值。" },
+  { initial: "张", name: "张一鸣", role: "AI 研究员", bio: "博士毕业于清华大学计算机系,主攻信息检索与推荐系统,发表顶会论文 20+ 篇,专注 AI 品牌可见度算法研究。" },
+];
+
+const values = [
+  { title: "创新驱动", description: "持续追踪 AI 技术前沿,为企业提供最准确的品牌可见度检测能力。我们相信技术创新是驱动品牌增长的核心动力,始终保持对新技术的高度敏感和快速吸收。" },
+  { title: "数据真实", description: "坚持真实、客观的数据分析原则,为品牌提供可信赖的可见度评估。我们不粉饰数据,只呈现事实,让每一个分析结果都经得起推敲。" },
+  { title: "客户至上", description: "深入理解品牌需求,提供贴合业务场景的分析服务和专业支持。客户的增长就是我们的成功,我们与客户建立长期伙伴关系,持续创造价值。" },
+  { title: "开放协作", description: "与行业伙伴和学术机构保持紧密合作,共同推动 AI 品牌可见度领域的标准建立和方法论创新。我们相信开放带来进步,协作创造共赢。" },
+];
+
+const stats = settings.stats.items;
+---
+
+<Layout title={`${settings.site_name} - 关于我们`} description={settings.site_description}>
+  <section class="bg-gradient-to-b from-primary-50 via-white to-white">
+    <div class="px-6 pt-28 pb-20 mx-auto max-w-7xl lg:px-12">
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="text-sm font-bold uppercase tracking-wider text-primary-700">关于我们</p>
+        <h1 class="mt-5 text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl">关于 {settings.site_name}</h1>
+        <p class="mt-4 text-lg text-base-500">{settings.hero.subtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="px-6 py-20 mx-auto max-w-7xl lg:px-12">
+      <div class="max-w-3xl mx-auto">
+        <div class="rounded-xl bg-white ring-1 ring-primary-200 p-8 hover:shadow-md transition duration-300">
+          <h2 class="text-2xl font-bold text-primary-900 text-center">我们的故事</h2>
+          <div class="mt-6 space-y-4 text-sm text-base-500 leading-relaxed">
+            <p>AI Growth Engine 诞生于 2024 年。创始团队在为企业提供数字营销服务时发现:随着 ChatGPT、Claude、Gemini 等 AI 模型的普及,越来越多的用户开始通过这些 AI 获取信息和做决策,但企业完全没有工具来了解自己在 AI 世界中的形象和影响力。这是一个全新的品牌管理维度,也是一个亟待填补的市场空白。</p>
+            <p>传统的品牌监测工具只能追踪社交媒体和新闻媒体,对于 AI 模型中的品牌提及和推荐却无能为力。这让我们意识到 AI 时代的品牌可见度分析将成为品牌管理和数字营销的新基础设施。当用户问 AI"推荐一个好的品牌"时,你的品牌是否会被提及?被提及时的语境是正面还是负面?这些问题的答案直接影响品牌在 AI 时代的竞争力。</p>
+            <p>于是我们创立了 AI Growth Engine,汇聚了来自 Google、头部 SaaS 公司和清华大学的顶尖人才,致力于打造覆盖主流 AI 模型、提供可执行洞察的品牌可见度分析平台。我们的使命是帮助品牌了解 AI 如何看待他们,并基于数据驱动的方法提升在 AI 时代的影响力。</p>
+            <p>今天,已有超过 100 家企业信任并使用 AI Growth Engine 来管理和提升他们的 AI 品牌可见度。我们持续投入研发,不断扩展支持的 AI 模型种类和分析维度,为客户创造实实在在的价值。未来,我们将继续深耕 AI 品牌可见度领域,成为品牌在 AI 时代不可或缺的增长引擎。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary-50">
+    <div class="px-6 py-20 mx-auto max-w-7xl lg:px-12">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-sm font-bold uppercase tracking-wider text-primary-700">数据</p>
+        <h2 class="mt-4 text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">我们的成就</h2>
+        <p class="mt-4 text-base text-base-500">用数据说话,见证品牌增长的力量</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-14">
+        {
+          stats.map(({ value, label }) => (
+            <div class="rounded-xl bg-white ring-1 ring-primary-200 p-6 text-center hover:shadow-md transition duration-300">
+              <div class="text-3xl font-bold text-primary-700">{value}</div>
+              <div class="text-sm text-base-500 mt-1">{label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="px-6 py-20 mx-auto max-w-7xl lg:px-12">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-sm font-bold uppercase tracking-wider text-primary-700">价值观</p>
+        <h2 class="mt-4 text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">使命与价值观</h2>
+        <p class="mt-4 text-base text-base-500">指导我们每一天的决策和行动</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14 max-w-5xl mx-auto">
+        {
+          values.map(({ title, description }) => (
+            <div class="rounded-xl bg-white ring-1 ring-primary-200 p-6 text-center hover:shadow-md transition duration-300">
+              <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-5 h-5 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-primary-900">{title}</h3>
+              <p class="mt-2 text-sm text-base-500 leading-relaxed">{description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary-50">
+    <div class="px-6 py-20 mx-auto max-w-7xl lg:px-12">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-sm font-bold uppercase tracking-wider text-primary-700">团队</p>
+        <h2 class="mt-4 text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">核心团队</h2>
+        <p class="mt-4 text-base text-base-500">来自行业顶尖的技术与产品专家,致力于打造最好的 AI 品牌可见度分析平台</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14 max-w-4xl mx-auto">
+        {
+          team.map(({ initial, name, role, bio }) => (
+            <div class="rounded-xl bg-white ring-1 ring-primary-200 p-6 text-center hover:shadow-md transition duration-300">
+              <div class="w-16 h-16 rounded-full bg-primary-900 text-white text-xl font-bold flex items-center justify-center mx-auto shadow-sm">{initial}</div>
+              <h3 class="mt-4 text-base font-semibold text-primary-900">{name}</h3>
+              <p class="text-xs text-primary-700 font-medium mt-1">{role}</p>
+              <p class="text-xs text-base-500 mt-2 leading-relaxed">{bio}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="px-6 py-20 mx-auto max-w-7xl lg:px-12 text-center">
+      <div class="max-w-xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">加入我们</h2>
+        <p class="mt-4 text-base text-base-500">如果你也对 AI 品牌可见度充满热情,欢迎加入我们的团队,一起塑造 AI 时代的品牌管理新标准。我们提供有竞争力的薪酬、灵活的工作方式和广阔的发展空间。</p>
+        <div class="flex flex-wrap items-center justify-center gap-4 mt-10">
+          <a href="/app" class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold bg-primary-900 text-white hover:bg-primary-800 transition shadow-sm">开始使用平台</a>
+          <a href="/contact" class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold ring-1 ring-primary-300 text-primary-700 bg-white hover:bg-primary-50 transition">联系我们</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
